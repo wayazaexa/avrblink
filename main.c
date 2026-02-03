@@ -1,8 +1,11 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define BIT_SET(a, b) ((a) |= (1ULL << (b)))
-#define BIT_CLEAR(a, b) ((a) &= ~(1ULL << (b)))
+// Efter att ha testat så är paranteserna runt 'a' och 'b' överflödiga, åtminstone på Linux.
+// Dessutom räcker det ja med en unsigned variabel istället för en unsigned long long eftersom
+//     de register vi använder är max 8 bitar.
+#define BIT_SET(a, b) (a |= (1U << b))
+#define BIT_CLEAR(a, b) (a &= ~(1U << b))
 
 void internal_led() {
     while (1) {
@@ -14,7 +17,7 @@ void internal_led() {
 }
 
 int main(void) {
-    DDRB |= (1 << 5);
+    DDRB |= (1U << 5); // Testade detta också, för att vara extra tydliga bör vi använda en unsigned här med
     internal_led();
     return 0;
 }
