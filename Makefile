@@ -3,7 +3,7 @@ LD := avr-ld
 OBJCOPY := avr-objcopy
 OBJISP := avrdude
 PORT := /dev/ttyACM0 # För att kunna flasha måste detta kopplas till den port arduinon är inkopplad till
-# På Linux kan man hitta det genom att köra kommandot <>
+# På Linux kan man hitta det genom att köra kommandot <sudo dmesg | grep tty>
 # På Windows får man nog kolla i device managern/enhetshanteraren, och det ser ut så här för COM3 som ett exempel: PORT := \\\\.\\COM3
 
 MCU := atmega328p
